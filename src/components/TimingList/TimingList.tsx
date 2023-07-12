@@ -106,9 +106,7 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
             console.log(err);
         } finally {
             setIsLoading(false);
-            setTimeout(() => {
-                invoke('close_splashscreen')
-            }, 5000);
+            invoke('close_splashscreen')
             
         }
     }
