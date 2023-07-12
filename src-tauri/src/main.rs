@@ -39,7 +39,7 @@ fn main() {
                 } => {
                     let window = app.get_window("main").unwrap();
                     // use TrayCenter as initial window position
-                    let _ = window.move_window(Position::TrayCenter);
+                    let _ = window.move_window(Position::TopCenter);
                     if window.is_visible().unwrap() {
                         window.hide().unwrap();
                     } else {
@@ -54,7 +54,7 @@ fn main() {
                     "reset" => {
                         app.emit_all("reset_location", ()).unwrap();
                         let window = app.get_window("main").unwrap();
-                        let _ = window.move_window(Position::TrayCenter);
+                        let _ = window.move_window(Position::TopCenter);
                         window.show().unwrap();
                         window.set_focus().unwrap();
                     }
