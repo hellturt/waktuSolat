@@ -34,7 +34,7 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
     }, [filter]);
 
     useEffect(() => {
-        if(timingList.length === 0 || filter !== 1) return 
+        if(timingList.length === 0) return 
         
         const currentTimestamp = Math.floor(Date.now() / 1000)
         const startMoment = moment.unix(currentTimestamp)
@@ -49,31 +49,31 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
         let isyakTimeout: null | ReturnType<typeof setTimeout> = null
         
         // Subuh
-        if(timingList[0] > currentTimestamp) {
+        if(timingList[0] > currentTimestamp && filter === 1) {
             const subuhDuration = moment.duration(moment.unix(timingList[0]).diff(startMoment)).asMilliseconds()
             subuhTimeout = setTimeout(() => {sendNotification({ title: 'Solat Notification', body: `Sekarang telah masuk waktu Subuh.` })}, subuhDuration)
         }
 
         // Zohor
-        if(timingList[2] > currentTimestamp) {
+        if(timingList[2] > currentTimestamp && filter === 1) {
             const zohorDuration = moment.duration(moment.unix(timingList[2]).diff(startMoment)).asMilliseconds()
             zohorTimeout = setTimeout(() => {sendNotification({ title: 'Solat Notification', body: `Sekarang telah masuk waktu Zohor.` })}, zohorDuration)
         }
 
         // Asar
-        if(timingList[3] > currentTimestamp) {
+        if(timingList[3] > currentTimestamp && filter === 1) {
             const asarDuration = moment.duration(moment.unix(timingList[3]).diff(startMoment)).asMilliseconds()
             asarTimeout = setTimeout(() => {sendNotification({ title: 'Solat Notification', body: `Sekarang telah masuk waktu Asar.` })}, asarDuration)
         }
 
         // Maghrib
-        if(timingList[4] > currentTimestamp) {
+        if(timingList[4] > currentTimestamp && filter === 1) {
             const maghribDuration = moment.duration(moment.unix(timingList[4]).diff(startMoment)).asMilliseconds()
             maghribTimeout = setTimeout(() => {sendNotification({ title: 'Solat Notification', body: `Sekarang telah masuk waktu Maghrib.` })}, maghribDuration)
         }
 
         // Isyak
-        if(timingList[5] > currentTimestamp) {
+        if(timingList[5] > currentTimestamp && filter === 1) {
             const isyakDuration = moment.duration(moment.unix(timingList[5]).diff(startMoment)).asMilliseconds()
             isyakTimeout = setTimeout(() => {sendNotification({ title: 'Solat Notification', body: `Sekarang telah masuk waktu Isyak.` })}, isyakDuration)
         }
@@ -93,7 +93,7 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
             if (isyakTimeout) clearTimeout(isyakTimeout)
             clearTimeout(nextDayTimeout)
         };
-      }, [timingList]);
+    }, [timingList]);
 
     const getTimingData = async () => {
         try {
