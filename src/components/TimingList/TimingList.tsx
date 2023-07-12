@@ -35,7 +35,7 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
     }, [filter]);
 
     useEffect(() => {
-        if(timingList.length === 0) return 
+        if(timingList.length === 0 || filter !== 1) return 
         
         const currentTimestamp = Math.floor(Date.now() / 1000)
         const startMoment = moment.unix(currentTimestamp)
