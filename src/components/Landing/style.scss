@@ -12,6 +12,12 @@
         }
     }
 
+    .btn-container {
+        button:first-child {
+            margin-right: 10px;
+        }
+    }
+
     .btn-cancel {
         min-width: 200px;
         max-width: 400px;
