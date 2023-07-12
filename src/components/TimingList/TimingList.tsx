@@ -22,8 +22,7 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
     const [hjDate, setHjDate] = useState('');
     const [filter, setFilter] = useState(1);
     const [isLoading, setIsLoading] = useState(true);
-
-    const currentDate = moment().format('D MMM YYYY');
+    const [currentDate, setCurrentDate] = useState(moment().format('D MMM YYYY'));
 
     useEffect(() => {
         getTimingData();
@@ -102,6 +101,7 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
             const { response, meta } = res.data;
             const { times } = response;
             setTimingList(times);
+            setCurrentDate(moment().format('D MMM YYYY'))
         } catch (err) {
             console.log(err);
         } finally {
