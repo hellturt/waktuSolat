@@ -18,6 +18,17 @@ use tauri_plugin_positioner::{Position, WindowExt};
 //         .expect("error while running tauri application");
 // }
 
+#[tauri::command]
+fn close_splashscreen(window: tauri::Window) {
+    // Close splashscreen
+    if let Some(splashscreen) = window.get_window("splashscreen") {
+        splashscreen.close().unwrap();
+    }
+    // Show main window
+    let _ = window.move_window(Position::Center);
+    window.get_window("main").unwrap().show().unwrap();
+}
+
 fn main() {
     let quit = CustomMenuItem::new("quit".to_string(), "Quit").accelerator("Cmd+Q");
     let reset = CustomMenuItem::new("reset".to_string(), "Change location").accelerator("Ctrl+N");
@@ -39,7 +50,7 @@ fn main() {
                 } => {
                     let window = app.get_window("main").unwrap();
                     // use TrayCenter as initial window position
-                    let _ = window.move_window(Position::TopCenter);
+                    let _ = window.move_window(Position::Center);
                     if window.is_visible().unwrap() {
                         window.hide().unwrap();
                     } else {
@@ -54,7 +65,7 @@ fn main() {
                     "reset" => {
                         app.emit_all("reset_location", ()).unwrap();
                         let window = app.get_window("main").unwrap();
-                        let _ = window.move_window(Position::TopCenter);
+                        let _ = window.move_window(Position::Center);
                         window.show().unwrap();
                         window.set_focus().unwrap();
                     }
@@ -67,7 +78,7 @@ fn main() {
                 _ => {}
             }
         })
-        
+        .invoke_handler(tauri::generate_handler![close_splashscreen])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

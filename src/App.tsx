@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import { invoke } from "@tauri-apps/api/tauri";
+import { invoke } from "@tauri-apps/api/tauri";
 import { listen } from "@tauri-apps/api/event"
 import { readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 import "./App.scss";
@@ -36,6 +36,7 @@ const App: React.FC = () => {
       setConfig(JSON.parse(config))
       setShowLanding(false)
     } catch (err) {
+      invoke('close_splashscreen')
       console.log(err)
     } finally {
       setIsLoading(false)

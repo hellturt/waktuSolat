@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { clearInterval, clearTimeout, setInterval, setTimeout } from 'worker-timers';
 import { isPermissionGranted, requestPermission, sendNotification } from '@tauri-apps/api/notification';
+import { invoke } from '@tauri-apps/api/tauri'
 import { getTiming, getHijriDate } from '../../api';
 import { PRAYER_LABEL, HIJRI_MONTH, GREG_MONTH, DAY_LABEL } from '../../const';
 import './style.scss';
@@ -105,6 +106,10 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
             console.log(err);
         } finally {
             setIsLoading(false);
+            setTimeout(() => {
+                invoke('close_splashscreen')
+            }, 5000);
+            
         }
     }
 
