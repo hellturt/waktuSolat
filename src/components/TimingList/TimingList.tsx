@@ -174,10 +174,6 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
         }
     };
 
-    const resetLocation = () => {
-        setShowLanding(true);
-    };
-
     const changeFilter = (index: number) => {
         setIsLoading(true);
         setFilter(index);
