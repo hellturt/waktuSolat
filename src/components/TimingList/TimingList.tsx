@@ -106,8 +106,9 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
             console.log(err);
         } finally {
             setIsLoading(false);
-            invoke('close_splashscreen')
-            
+            setTimeout(() => {
+                invoke('close_splashscreen')
+            }, 2000);
         }
     }
 
@@ -146,7 +147,7 @@ const TimingList: React.FC<TimingListProps> = ({ config, setShowLanding }) => {
                                             : ''
                                             } `}
                                     >
-                                        {moment.unix(innerArray[0]).format('D/M/YYYY')}
+                                        <div>{DAY_LABEL[moment.unix(innerArray[0]).weekday()]}, {moment.unix(innerArray[0]).format('D/M/YYYY')}</div>
                                     </span>
                                     {innerArray.map((item: number, innerIndex: number) => {
                                         return (

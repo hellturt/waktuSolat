@@ -79,7 +79,8 @@
             display: flex;
             flex-direction: column;
             padding: 10px;
-            width: 80px;
+            width: 90px;
+            box-sizing: border-box;
         }
 
         .single-timing span.highlight {
@@ -87,7 +88,8 @@
         }
 
         .day-label {
-            padding: 10px;
+            width: 160px;
+            padding: 10px 0;
         }
 
         .day-label.highlight {
@@ -95,9 +97,15 @@
         }
 
         .label-container {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            display: flex;
             width: 100%;
+
+            span {
+                width: 90px;
+            }
+            span:first-child {
+                width: 22.7%;
+            }
         }
     }
 
