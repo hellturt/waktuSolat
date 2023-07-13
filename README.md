@@ -1,7 +1,8 @@
-# Tauri + React + Typescript
+# Waktu Solat
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+A desktop app for prayer time in Malaysia
 
-## Recommended IDE Setup
+ - Daily, weekly, and monthly prayer time view
+ - Notification for daily prayer time
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+> Build with Tauri + React + Typescript
