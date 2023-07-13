@@ -6,3 +6,5 @@ A desktop app for prayer time in Malaysia
  - Notification for daily prayer time
 
 > Build with Tauri + React + Typescript
+> Prayer Time API: [Malaysia Prayer Times](https://mpt.i906.my/)
+> Hijri Date Conversion API: [Islamic / Hijri Date Conversion API](https://aladhan.com/islamic-calendar-api)
